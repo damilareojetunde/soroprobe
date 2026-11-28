@@ -51,9 +51,9 @@ func CreateContractFunction(preimage xdr.ContractIdPreimage, wasmHash xdr.Hash, 
 }
 
 // DeployedContractID is the address a contract created from preimage gets on
-// the network with the given passphrase.
-func DeployedContractID(passphrase string, preimage xdr.ContractIdPreimage) (string, error) {
-	networkID := xdr.Hash(sha256.Sum256([]byte(passphrase)))
+// the network with the given network passphrase.
+func DeployedContractID(network string, preimage xdr.ContractIdPreimage) (string, error) {
+	networkID := xdr.Hash(sha256.Sum256([]byte(network)))
 	full := xdr.HashIdPreimage{
 		Type:       xdr.EnvelopeTypeEnvelopeTypeContractId,
 		ContractId: &xdr.HashIdPreimageContractId{NetworkId: networkID, ContractIdPreimage: preimage},

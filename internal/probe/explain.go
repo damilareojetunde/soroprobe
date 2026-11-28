@@ -174,7 +174,7 @@ func (p *Prober) explainFailure(ctx context.Context, contractID, msg string) *Er
 	}
 	iface, err := p.chain.Interface(ctx, p.network, contractID)
 	if err != nil {
-		p.log.Debug("could not read the contract interface to name an error", "contract", contractID, "err", err)
+		p.log.Debug("could not read the contract interface to name an error", "contract", fmt.Sprintf("%q", contractID), "err", err)
 		explained := ExplainError(msg, nil)
 		explained.Note = "the contract interface could not be read, so the code cannot be named: " + err.Error()
 		return explained
